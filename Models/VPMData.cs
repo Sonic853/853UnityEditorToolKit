@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -104,29 +105,45 @@ namespace Sonic853.Models
             }
             return latestVersion;
         }
-        public static int VersionCompare(string version1, string version2)
+        /// <summary>
+        /// 版本比较
+        /// </summary>
+        /// /// <param name="version1"></param>
+        /// <param name="version2"></param>
+        /// <returns></returns>
+        static int VersionCompare(string version1, string version2)
         {
+            version1 = version1.Trim();
+            if (version1.ToLower().StartsWith("v"))
+                version1 = version1[1..];
+            version2 = version2.Trim();
+            if (version2.ToLower().StartsWith("v"))
+                version2 = version2[1..];
             var version1Array = version1.Split('.');
             var version2Array = version2.Split('.');
             for (int i = 0; i < version1Array.Length; i++)
             {
                 if (version2Array.Length <= i)
-                {
                     return 1;
-                }
-                if (int.Parse(version1Array[i]) > int.Parse(version2Array[i]))
+                // tryparse
+                if (int.TryParse(version1Array[i], out var version1Int)
+                && int.TryParse(version2Array[i], out var version2Int))
                 {
-                    return 1;
+                    if (version1Int > version2Int)
+                        return 1;
+                    else if (version1Int < version2Int)
+                        return -1;
                 }
-                else if (int.Parse(version1Array[i]) < int.Parse(version2Array[i]))
+                else
                 {
-                    return -1;
+                    if (string.Compare(version1Array[i], version2Array[i], StringComparison.Ordinal) > 0)
+                        return 1;
+                    else if (string.Compare(version1Array[i], version2Array[i], StringComparison.Ordinal) < 0)
+                        return -1;
                 }
             }
             if (version2Array.Length > version1Array.Length)
-            {
                 return -1;
-            }
             return 0;
         }
     }
