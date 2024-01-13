@@ -1,0 +1,6 @@
+[submodule "PackageManagerChecker"]
+	path = PackageManagerChecker
+	url = git@github.com:Sonic853/UnityPackageManagerChecker.git
+[submodule "PackageInstaller"]
+	path = PackageInstaller
+	url = git@github.com:Sonic853/UnityPackageInstaller.git

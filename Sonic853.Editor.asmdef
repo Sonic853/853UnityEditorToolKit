@@ -1,0 +1,18 @@
+{
+    "name": "Sonic853.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Sonic853.Translate.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
