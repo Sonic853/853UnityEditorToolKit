@@ -2,7 +2,9 @@
     "name": "Sonic853.Editor",
     "rootNamespace": "",
     "references": [
-        "Sonic853.Translate.Editor"
+        "Sonic853.Translate.Editor",
+        "VRC.Udon.Editor",
+        "VRC.Udon"
     ],
     "includePlatforms": [
         "Editor"
